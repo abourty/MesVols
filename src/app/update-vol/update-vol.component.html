@@ -1,0 +1,57 @@
+<div class="container">
+  <div>
+  <h2>Modifier un Vol :</h2>
+  </div>
+  <form >
+  <div class="col-sm-2 col-md-2 col-lg-2">
+  <label >ID Vol</label>
+  <input type="text" [(ngModel)]="currentVol.idVol"
+  name="idVol" class="form-control">
+  </div>
+  <div class="col-sm-4 col-md-4 col-lg-4" >
+  <label >compagnieAerienne</label>
+  <input type="text"[(ngModel)]= "currentVol.compagnieAerienneVol"
+  name="compagnieAerienneVol" class="form-control">
+  </div>
+
+  <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >destination</label>
+    <input type="text"[(ngModel)]= "currentVol.destinationVol"
+    name="destinationVol" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+      <label >origine</label>
+      <input type="text"[(ngModel)]= "currentVol.origineVol"
+      name="origineVol" class="form-control">
+      </div>
+
+
+  <div class="col-sm-2 col-md-2 col-lg-2">
+  <label >Prix Vol</label>
+  <input type="number" [(ngModel)]= "currentVol.prixVol"
+  name="prixVol" class="form-control">
+  </div>
+
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Date</label>
+    <input type="date" [ngModel]="currentVol.date | date: 'yyyy-MM-dd'"
+    (ngModelChange)=" currentVol.date= $event" name="date"
+     class="form-control">
+    </div>
+
+
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <select class="form-control form-control-lg" id="idPil" name="idPil"
+      [(ngModel)]="updatedPilId">
+      <option *ngFor="let pil of pilotes" [value]="pil.idPil" >
+      {{pil.nomPil}}
+      </option>
+      </select>
+      </div>
+
+    <div class="mt-2">
+    <button type="submit" (click)="updateVol()" class="btn btn-success">Modifer</button>
+    </div>
+    </form>
+    </div>

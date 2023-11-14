@@ -1,0 +1,51 @@
+<div class="container">
+  <div>
+  <h2>Ajouter un Vol :</h2>
+  </div>
+  <form >
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >ID Vol</label>
+    <input type="number" [(ngModel)]="newVol.idVol"
+    name="idProduit" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >compagnieAerienne Vol</label>
+    <input type="text"[(ngModel)]= "newVol.compagnieAerienneVol"
+    name="compagnieAerienneVol" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >origine Vol</label>
+    <input type="text" [(ngModel)]= "newVol.origineVol"
+    name="origineVol" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >destination Vol</label>
+    <input type="text" [(ngModel)]= "newVol.destinationVol"
+    name="destinationVol" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label >prix Vol</label>
+      <input type="number" [(ngModel)]= "newVol.prixVol"
+      name="prixVol" class="form-control">
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >date</label>
+        <input type="date" [(ngModel)]= "newVol.date"
+        name="date" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <label>Pilote</label>
+          <select class="form-control form-control-lg" id="idPil" name="idPil"
+          [(ngModel)]="newIdPil">
+           <option *ngFor="let pil of pilotes" [value]="pil.idPil" >
+           {{pil.nomPil}}
+          </option>
+          </select>
+          </div>
+
+    <div class="mt-2">
+    <button type="submit" (click)="addVol()"class="btn btn-success">Ajouter</button>
+    </div>
+    </form>
+    </div>
