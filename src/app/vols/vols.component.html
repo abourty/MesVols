@@ -14,7 +14,6 @@
   <td>{{vol.destinationVol}}</td>
   <td>{{vol.prixVol}}</td>
   <td>{{vol.date | date:'dd/MM/yyyy'}}</td>
-
   <td>{{vol.pilote.nomPil}}</td>
   <td><a class="btn btn-danger" (click)="supprimerVol(vol)">Supprimer</a></td>
   <td><a class="btn btn-success" [routerLink]="['/updateVol',vol.idVol]">Modifier</a></td>

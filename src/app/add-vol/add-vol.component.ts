@@ -20,16 +20,21 @@ export class AddVolComponent  implements OnInit{
   newPilote! : Pilote;
   constructor(private volService: VolService ,private router :Router) { }
 
-  ngOnInit() {
-    this.pilotes = this.volService.listePilotes();
-  }
+  ngOnInit(): void {
+    this.volService.listePilotes().
+    subscribe(pils => {console.log(pils);
+      this.pilotes = pils._embedded.pilotes;
+      }
+    );
+    }
+
 
   addVol(){
-    console.log(this.newIdPil);
-    this.newPilote =this.volService.consulterPilotes(this.newIdPil);
-    this.newVol.pilote = this.newPilote;
-    this.volService.ajouterVol(this.newVol);
+    this.newVol.pilote = this.pilotes.find(pil => pil.idPil == this.newIdPil)!;
+    this.volService.ajouterVol(this.newVol) .subscribe(vo => {
+    console.log(vo);
     this.router.navigate(['vols']);
-  }
-}
+    });
+    }
 
+  }

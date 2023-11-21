@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VolService } from '../services/vol.service';
-import { Vol } from '../model/vol.model';
 import { Pilote } from '../model/pilote.model';
+import { Vol } from '../model/vol.model';
+import { VolService } from '../services/vol.service';
 
 @Component({
   selector: 'app-update-vol',
@@ -20,26 +20,29 @@ constructor(private activatedRoute: ActivatedRoute,
   private router :Router,
 
 private volService: VolService) { }
-ngOnInit() :void{
+
 //console.log(this.activatedRoute.snapshot.params['id']);
-this.pilotes = this.volService.listePilotes();
+//this.pilotes = this.volService.listePilotes();
 
-this.currentVol = this.volService.consulterVol(this.activatedRoute.snapshot. params['id']);
+ngOnInit(): void {
+  this.volService.listePilotes().
+  subscribe(pils => {console.log(pils);
+    this.pilotes = pils._embedded.pilotes;
+    }
+  );
+  this.volService.consulterVol(this.activatedRoute.snapshot.params['id']).
+  subscribe( vo =>{ this.currentVol = vo;
+  this.updatedPilId = this.currentVol.pilote.idPil;
+  } ) ;
+  }
 
-this.updatedPilId=this.currentVol.pilote.idPil;
-//console.log(this.currentVol);
+updateVol() {
+
+  this.currentVol.pilote = this.pilotes.
+ find(pil => pil.idPil == this.updatedPilId)!;
+  this.volService.updateVol(this.currentVol).subscribe(vo => {
+  this.router.navigate(['vols']); }
+  );
 }
 
-updateVol()
-{
- // console.log(this.currentVol);
-this.currentVol.pilote=this.volService.consulterPilotes(this.updatedPilId);
-this.volService.updateVol(this.currentVol);
-this.router.navigate(['vols']);
-
-
-
 }
-}
-
-

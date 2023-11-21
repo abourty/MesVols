@@ -10,20 +10,30 @@ import { VolService } from '../services/vol.service';
   styleUrls: ['./vols.component.css']
 })
 export class VolsComponent implements OnInit {
-  vols : Vol[];
+vols! : Vol[];
 
-  constructor( private volService: VolService ) {
-    this.vols = volService.listeVols();
+  constructor( private volService: VolService )
+   {
+    //this.vols = volService.listeVols();
+  }
+
+
+  ngOnInit(): void {
+    this.chargerVols();
+    }
+    chargerVols(){
+    this.volService.listeVols().subscribe(vo => {
+    console.log(vo);
+    this.vols = vo;
+    });
     }
     supprimerVol(v: Vol)
     {
-      let conf = confirm("Etes-vous sûr ?");
-       if (conf)
-       this.volService.supprimerVol(v);
+    let conf = confirm("Etes-vous sûr ?");
+    if (conf)
+    this.volService.supprimerVol(v.idVol).subscribe(() => {
+    console.log("vol supprimé");
+    this.chargerVols();
+    });
     }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
-
-}

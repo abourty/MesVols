@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label for="idPil">Pilotes:</label>
+      <select class="form-control form-control-lg" id="idPil" name="idPil" [(ngModel)]="IdPilote" (change)="onChange()">
+        <option value="" disabled selected>Sélectionnez un pilote</option>
+        <option *ngFor="let pilote of pilotes" [value]="pilote.idPil">{{ pilote.nomPil }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Compagnie Aérienne</th>
+            <th>Origine</th>
+            <th>Destination</th>
+            <th>Prix</th>
+            <th>Date</th>
+            <th>Pilote</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="vols && vols.length > 0; else noVolsFound">
+          <tr *ngFor="let vol of vols">
+            <td>{{ vol.idVol }}</td>
+            <td>{{ vol.compagnieAerienneVol }}</td>
+            <td>{{ vol.origineVol }}</td>
+            <td>{{ vol.destinationVol }}</td>
+            <td>{{ vol.prixVol }}</td>
+            <td>{{ vol.date | date:'dd/MM/yyyy' }}</td>
+            <td>{{ vol.pilote.nomPil }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noVolsFound>
+        <div class="alert alert-info">Aucun vol trouvé.</div>
+      </ng-template>
+    </div>
+  </div>
+</div>
