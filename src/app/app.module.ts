@@ -12,6 +12,9 @@ import { RechercheParPiloteComponent } from './recherche-par-pilote/recherche-pa
 import { SearchFilterPipe } from './search-filter.pipe';
 import { UpdateVolComponent } from './update-vol/update-vol.component';
 import { VolsComponent } from './vols/vols.component';
+import { ListePilotesComponent } from './liste-pilotes/liste-pilotes.component';
+import { UpdatePiloteComponent } from './update-pilote/update-pilote.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,10 @@ import { VolsComponent } from './vols/vols.component';
     UpdateVolComponent,
     RechercheParPiloteComponent,
     RechercheParDestinationComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ListePilotesComponent,
+    UpdatePiloteComponent,
+    LoginComponent
 
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vol } from '../model/vol.model';
 import { VolService } from '../services/vol.service';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -12,7 +13,7 @@ import { VolService } from '../services/vol.service';
 export class VolsComponent implements OnInit {
 vols! : Vol[];
 
-  constructor( private volService: VolService )
+  constructor( private volService: VolService,public authService: AuthService )
    {
     //this.vols = volService.listeVols();
   }

@@ -6,7 +6,7 @@ export class Vol {
   origineVol! : string ;
   destinationVol!: string ;
   prixVol! : number;
-  date! : Date ;
+  dateDep! : Date ;
   pilote! : Pilote;
   }
 

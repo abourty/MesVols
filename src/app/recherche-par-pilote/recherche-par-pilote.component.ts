@@ -7,28 +7,29 @@ import { VolService } from '../services/vol.service';
 @Component({
   selector: 'app-recherche-par-pilote',
   templateUrl: './recherche-par-pilote.component.html',
-  styleUrls: ['./recherche-par-pilote.component.css']
+  styleUrls: []
 })
 export class RechercheParPiloteComponent implements OnInit {
 
-vols! : Vol[];
 IdPilote! : number;
+vols! : Vol[];
 pilotes! : Pilote[];
 
-constructor(private volService:VolService) {
+constructor(private volService : VolService) {
 
 }
 
 ngOnInit(): void {
   this.volService.listePilotes().
-  subscribe(pils => {this.pilotes = pils._embedded.pilotes;
+  subscribe(pils => {
+    this.pilotes = pils._embedded.pilotes;
   console.log(pils);
   });
   }
 
   onChange() {
     this.volService.rechercherParPilote(this.IdPilote).
-      subscribe(prods =>{this.vols=prods});
+      subscribe(vo =>{this.vols=vo});
 
     }
 }

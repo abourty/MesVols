@@ -1,0 +1,24 @@
+<form>
+  <div [hidden]="ajout">
+  <label >ID Pilote</label>
+  <input type="text"  [readonly]="!ajout" [(ngModel)]="pilote.idPil" name="idPilote" class="form-control w-25">
+  </div>
+
+  <div>
+  <label>Nom Pilote</label>
+  <input type="text" [(ngModel)]="pilote.nomPil" name="nomPilote" class="form-control"
+  placeholder="Entrez un nom de pilote...">
+  </div>
+  <div>
+  <label>NumeroLicense Pilote</label>
+  <input type="text" [(ngModel)]="pilote.numeroLicensePil" name="numeroLicensePilote" class="form-control"
+  placeholder="Entrez un numeroLicense de pilote...">
+  </div>
+
+
+  <div class="mt-2">
+   <button type="submit" [disabled]="!pilote.nomPil || !pilote.numeroLicensePil" class="btn btn-success"
+  (click)="savePilote()"> >{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+  </div>
+
+  </form>

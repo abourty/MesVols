@@ -6,6 +6,8 @@ import { UpdateVolComponent } from './update-vol/update-vol.component';
 import { VolsComponent } from './vols/vols.component';
 import { RechercheParDestinationComponent } from './recherche-par-destination/recherche-par-destination.component';
 import { RechercheParPiloteComponent } from './recherche-par-pilote/recherche-par-pilote.component';
+import { ListePilotesComponent } from './liste-pilotes/liste-pilotes.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: "vols", component : VolsComponent},
@@ -14,6 +16,9 @@ const routes: Routes = [
   {path: "updateVol/:id", component: UpdateVolComponent},
   {path: "rechercheParPilote", component : RechercheParPiloteComponent},
   {path: "rechercheParDestination", component : RechercheParDestinationComponent},
+  {path: "listePilotes", component : ListePilotesComponent},
+  {path: 'login', component: LoginComponent},
+
   { path: "", redirectTo: "vols", pathMatch: "full" }
 ];
 

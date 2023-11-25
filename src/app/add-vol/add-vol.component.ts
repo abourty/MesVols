@@ -22,7 +22,7 @@ export class AddVolComponent  implements OnInit{
 
   ngOnInit(): void {
     this.volService.listePilotes().
-    subscribe(pils => {console.log(pils);
+    subscribe(pils => {console.log("pil",pils);
       this.pilotes = pils._embedded.pilotes;
       }
     );
